@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,6 +10,12 @@
       background-color: #f5f7fa;
       text-align: center;
       padding-top: 60px;
+    }
+
+    .temperature {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #333;
     }
 
     button {
@@ -27,14 +32,18 @@
 
 <body>
   <h1>Hello 👋</h1>
-  <p>Click the button to get a time‑based greeting.</p>
+
+  <!-- Temperature display -->
+  <div class="temperature" id="temperature">
+    Loading temperature for Warwick, UK…
+  </div>
 
   <button onclick="sayHello()">Greet me</button>
 
   <script>
+    // -------- Time‑based greeting --------
     function sayHello() {
-      const now = new Date();
-      const hour = now.getHours(); // 0–23
+      const hour = new Date().getHours();
       let greeting;
 
       if (hour >= 5 && hour < 12) {
@@ -49,6 +58,30 @@
 
       alert(greeting);
     }
+
+    // -------- Weather (Warwick, UK) --------
+    async function loadTemperature() {
+      const url =
+        "https://api.open-meteo.com/v1/forecast" +
+        "?latitude=52.2869" +
+        "&longitude=-1.5820" +
+        "&current_weather=true";
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const temp = data.current_weather.temperature;
+        document.getElementById("temperature").innerText =
+          `🌡️ Temperature in Warwick, UK: ${temp}°C`;
+      } catch (error) {
+        document.getElementById("temperature").innerText =
+          "Unable to load temperature";
+      }
+    }
+
+    // Load temperature when page opens
+    loadTemperature();
   </script>
 </body>
 </html>
