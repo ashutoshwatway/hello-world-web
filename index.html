@@ -2,15 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Hello World</title>
+  <title>Hello World App</title>
+
+  <!-- CSS: how the page looks -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #005ea2;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hello, World!</h1>
+  <!-- HTML: page structure -->
+  <h1>Hello, World 👋</h1>
+  <p>This is my first web app.</p>
+
   <button onclick="sayHello()">Click me</button>
 
+  <!-- JavaScript: page behavior -->
   <script>
     function sayHello() {
-      alert("Hello, World!");
+      alert("Hello from JavaScript!");
     }
   </script>
 </body>
