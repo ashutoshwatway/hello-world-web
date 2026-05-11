@@ -1,20 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Hello World App</title>
 
-  <!-- CSS: how the page looks -->
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f5f7fa;
       text-align: center;
       padding-top: 60px;
-    }
-
-    h1 {
-      color: #2c3e50;
     }
 
     button {
@@ -25,26 +21,33 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      margin-top: 20px;
-    }
-
-    button:hover {
-      background-color: #005ea2;
     }
   </style>
 </head>
 
 <body>
-  <!-- HTML: page structure -->
-  <h1>Hello, World 👋</h1>
-  <p>This is my first web app.</p>
+  <h1>Hello 👋</h1>
+  <p>Click the button to get a time‑based greeting.</p>
 
-  <button onclick="sayHello()">Click me</button>
+  <button onclick="sayHello()">Greet me</button>
 
-  <!-- JavaScript: page behavior -->
   <script>
     function sayHello() {
-      alert("Hello from JavaScript!");
+      const now = new Date();
+      const hour = now.getHours(); // 0–23
+      let greeting;
+
+      if (hour >= 5 && hour < 12) {
+        greeting = "Good morning ☀️";
+      } else if (hour >= 12 && hour < 17) {
+        greeting = "Good afternoon 🌤️";
+      } else if (hour >= 17 && hour < 23) {
+        greeting = "Good evening 🌙";
+      } else {
+        greeting = "Hello 👋";
+      }
+
+      alert(greeting);
     }
   </script>
 </body>
